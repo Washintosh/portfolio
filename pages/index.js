@@ -1,28 +1,12 @@
 import Head from "next/head";
 import Hero from "../Hero";
 import Navbar from "../Navbar";
-import LanguageSubmenu from "../LanguageSubmenu";
 import AboutMe from "../AboutMe";
 import Projects from "../Projects";
 import Contact from "../Contact";
 import Sidebar from "../Sidebar";
-import LanguageModal from "../LanguageModal";
-import { useGlobalContext } from "./_app";
-import { useEffect } from "react";
 
 const Home = () => {
-  // const {
-  //   languageSelected,
-  //   setLanguageSelected,
-  //   openLanguageModal,
-  //   closeLanguageModal,
-  // } = useGlobalContext();
-  // // useEffect(() => {
-  // //   if (!localStorage.getItem("language")) {
-  // //     openLanguageModal();
-  // //   }
-  // //   // setLanguageSelected(localStorage.getItem("language"));
-  // // }, []);
   return (
     <>
       <Head>
@@ -33,7 +17,6 @@ const Home = () => {
         <meta name="description" content="" />
         <meta name="keywords" content="HTML CSS JavaScript" />
       </Head>
-      {/* <LanguageModal /> */}
       <Navbar />
       <Hero />
       <Sidebar />

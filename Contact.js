@@ -6,7 +6,7 @@ import emailjs from "@emailjs/browser";
 const Contact = () => {
   const [alert, setAlert] = useState(false);
   const contactTitleRef = useRef(null);
-  const [message, setMessage] = useState(translate("Click to copy"));
+  const [message, setMessage] = useState("Click to copy");
   const [formAlert, setFormAlert] = useState({
     show: false,
     message: "",
@@ -125,7 +125,7 @@ const Contact = () => {
             value={formName}
             onChange={(e) => setFormName(e.target.value)}
           />
-          <p>{translate("name")}</p>
+          <p>name</p>
         </label>
         <label htmlFor="subject">
           <input
