@@ -52,7 +52,7 @@ const Navbar = () => {
           </li>
         </ul>
       </div>
-      <LanguageSubmenu />
+      {/* <LanguageSubmenu /> */}
     </nav>
   );
 };

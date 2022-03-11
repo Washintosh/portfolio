@@ -219,7 +219,7 @@ ul {
   transform: translateY(-100%);
   font-weight: 500;
   opacity: 0;
-  transition: all 0.4s ease;
+  transition: transform 0.4s ease, opacity 0.4s ease;
   z-index: 0;
   user-select: none;
   position: absolute;
@@ -340,6 +340,7 @@ ul {
 .projects {
   position: relative;
   width: 100%;
+  overflow: hidden;
 }
 
 .projects .information {
@@ -648,10 +649,15 @@ ul {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
-  height: 100%;
+  min-height: 100vh;
   padding: 0 6rem;
+  align-items: center;
 }
 .aboutMe article > div {
+  height: 90%;
+  background-color: rgba(0, 198, 207, 0.5);
+  padding: 3rem;
+  border-radius: 2rem;
   font-size: 1.2rem;
   display: flex;
   flex-direction: column;
@@ -818,5 +824,9 @@ ul {
   .aboutMe article {
     display: block;
     padding: 5rem 4rem;
+  }
+  .projects .images {
+    width: 100%;
+    left: 0;
   }
 }
