@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import { useGlobalContext } from "./pages/_app";
 import { FaReact, FaNodeJs } from "react-icons/fa";
 import {
   SiNextdotjs,
@@ -11,7 +10,6 @@ import {
 } from "react-icons/si";
 
 const AboutMe = () => {
-  const { translate, openProjects, closeProjects } = useGlobalContext();
   const aboutMeRef = useRef(null);
   const aboutMeTitleRef = useRef(null);
   const [screenWidth, setScreenWidth] = useState(0);
@@ -34,19 +32,19 @@ const AboutMe = () => {
   return (
     <section className="aboutMe" id="aboutMe" ref={aboutMeRef}>
       <h2 className="aboutMeTitle" ref={aboutMeTitleRef}>
-        {translate("about me")}
+        about me
       </h2>
       <article>
         <div>
           <p>
-            {translate(
-              "Hi, I'm Washington. I create web pages that give users a fulfilling experience. Even though I study business administration in the university, my interest in development started when I was taught the programming fundamentals in a lesson."
-            )}
+            "Hi, I'm Washington. I create web pages that give users a fulfilling
+            experience. Even though I study business administration in the
+            university, my interest in development started when I was taught the
+            programming fundamentals in a lesson.
           </p>
           <p>
-            {translate(
-              "Here are the technologies I've been working with recently in my projects:"
-            )}
+            Here are the technologies I've been working with recently in my
+            projects:
           </p>
           <ul>
             <li>

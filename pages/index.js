@@ -11,18 +11,18 @@ import { useGlobalContext } from "./_app";
 import { useEffect } from "react";
 
 const Home = () => {
-  const {
-    languageSelected,
-    setLanguageSelected,
-    openLanguageModal,
-    closeLanguageModal,
-  } = useGlobalContext();
-  // useEffect(() => {
-  //   if (!localStorage.getItem("language")) {
-  //     openLanguageModal();
-  //   }
-  //   // setLanguageSelected(localStorage.getItem("language"));
-  // }, []);
+  // const {
+  //   languageSelected,
+  //   setLanguageSelected,
+  //   openLanguageModal,
+  //   closeLanguageModal,
+  // } = useGlobalContext();
+  // // useEffect(() => {
+  // //   if (!localStorage.getItem("language")) {
+  // //     openLanguageModal();
+  // //   }
+  // //   // setLanguageSelected(localStorage.getItem("language"));
+  // // }, []);
   return (
     <>
       <Head>

@@ -2,7 +2,7 @@ import { FaTimes } from "react-icons/fa";
 import { useGlobalContext } from "./pages/_app";
 
 const Sidebar = () => {
-  const { closeSidebar, translate, isSidebarOpen } = useGlobalContext();
+  const { closeSidebar, isSidebarOpen } = useGlobalContext();
   return (
     <aside className={`${isSidebarOpen ? "show sidebar" : "sidebar"}`}>
       <div className="faTimesContainer">
@@ -13,13 +13,13 @@ const Sidebar = () => {
       <div className="sidebarButtons">
         <ul>
           <li>
-            <a href="#">{translate("about me")}</a>
+            <a href="#">about me</a>
           </li>
           <li>
-            <a href="#">{translate("projects")}</a>
+            <a href="#">projects</a>
           </li>
           <li>
-            <a href="#">{translate("contact")}</a>
+            <a href="#">contact</a>
           </li>
         </ul>
       </div>

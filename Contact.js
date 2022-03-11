@@ -1,11 +1,9 @@
 import { useEffect, useRef, useState } from "react";
-import { useGlobalContext } from "./pages/_app";
 import { HiOutlineMail } from "react-icons/hi";
 import { AiFillLinkedin, AiFillGithub } from "react-icons/ai";
 import emailjs from "@emailjs/browser";
 
 const Contact = () => {
-  const { translate, closeProjects, openProjects } = useGlobalContext();
   const [alert, setAlert] = useState(false);
   const contactTitleRef = useRef(null);
   const [message, setMessage] = useState(translate("Click to copy"));
@@ -116,7 +114,7 @@ const Contact = () => {
         {formAlert.message}
       </div>
       <h2 className="contactTitle" ref={contactTitleRef}>
-        {translate("contact")}
+        contact
       </h2>
       <form className="contactForm" ref={contactFormRef} onSubmit={sendEmail}>
         <label htmlFor="name">
@@ -148,7 +146,7 @@ const Contact = () => {
             value={formEmail}
             onChange={(e) => setFormEmail(e.target.value)}
           />
-          <p>{translate("email")}</p>
+          <p>email</p>
         </label>
         <label htmlFor="message">
           <textarea
@@ -158,9 +156,9 @@ const Contact = () => {
             value={formMessage}
             onChange={(e) => setFormMessage(e.target.value)}
           />
-          <p>{translate("message")}</p>
+          <p>message</p>
         </label>
-        <button>{translate("send")}</button>
+        <button>send</button>
         {alert}
       </form>
       <article className="contactArticle" ref={contactArticleRef}>
@@ -177,14 +175,14 @@ const Contact = () => {
           className="mailContainer"
           onClick={() => {
             navigator.clipboard.writeText("wyagualmindiola@gmail.com");
-            setMessage(translate("Copied to clipboard"));
+            setMessage("Copied to clipboard");
           }}
           onMouseEnter={() => {
             setAlert(true);
           }}
           onMouseLeave={() => {
             setAlert(false);
-            setMessage(translate("Click to copy"));
+            setMessage("Click to copy");
           }}
         >
           <div className="mailIcon">
@@ -194,7 +192,7 @@ const Contact = () => {
           <p
             className={`${
               alert
-                ? message === translate("Copied to clipboard")
+                ? message === "Copied to clipboard"
                   ? "mailAlert show correct"
                   : "mailAlert show"
                 : "mailAlert"

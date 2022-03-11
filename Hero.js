@@ -1,12 +1,10 @@
-import { useGlobalContext } from "./pages/_app";
 import { AiFillLinkedin, AiFillGithub } from "react-icons/ai";
 import { HiOutlineMail } from "react-icons/hi";
 import { useEffect, useRef, useState } from "react";
 
 const Hero = () => {
-  const { translate } = useGlobalContext();
   const [alert, setAlert] = useState(false);
-  const [message, setMessage] = useState(translate("Click to copy"));
+  const [message, setMessage] = useState("Click to copy");
   const heroRef = useRef(null);
   useEffect(() => {
     for (let i = 0; i < heroRef.current.children.length; i++) {
@@ -17,8 +15,8 @@ const Hero = () => {
   return (
     <div className="hero" ref={heroRef}>
       <h1>Washington</h1>
-      <h2>{translate("Full Stack Developer & Finantial Analist")}</h2>
-      <span className="heroSpan">{translate("Available for work")}</span>
+      <h2>Full Stack Developer</h2>
+      <span className="heroSpan">Available for work</span>
       <div className="socialIconContainer">
         <a
           href="https://www.linkedin.com/in/washington-xavier-yagual-mindiola-42a811215/"
@@ -39,14 +37,14 @@ const Hero = () => {
         className="mailContainer"
         onClick={() => {
           navigator.clipboard.writeText("wyagualmindiola@gmail.com");
-          setMessage(translate("Copied to clipboard"));
+          setMessage("Copied to clipboard");
         }}
         onMouseEnter={() => {
           setAlert(true);
         }}
         onMouseLeave={() => {
           setAlert(false);
-          setMessage(translate("Click to copy"));
+          setMessage("Click to copy");
         }}
       >
         <div className="mailIcon">
@@ -56,7 +54,7 @@ const Hero = () => {
         <p
           className={`${
             alert
-              ? message === translate("Copied to clipboard")
+              ? message === "Copied to clipboard"
                 ? "mailAlert show correct"
                 : "mailAlert show"
               : "mailAlert"

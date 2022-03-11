@@ -1,6 +1,5 @@
 import { createContext, useContext, useState } from "react";
 import "../styles/globals.css";
-import translations from "../translations";
 
 const globalContext = createContext();
 function MyApp({ Component, pageProps }) {
@@ -8,7 +7,6 @@ function MyApp({ Component, pageProps }) {
   const [location, setLocation] = useState({});
   const [languageSelected, setLanguageSelected] = useState("english");
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [isLanguageModalOpen, setIsLanguageModalOpen] = useState(false);
 
   const openSubmenu = (l) => {
     setIsSubmenuOpen(true);
@@ -28,10 +26,6 @@ function MyApp({ Component, pageProps }) {
   };
   const closeLanguageModal = () => {
     setIsLanguageModalOpen(false);
-  };
-
-  const translate = (id) => {
-    return translations[languageSelected][id];
   };
 
   const [seeProjects, setSeeProjects] = useState(false);
@@ -58,13 +52,9 @@ function MyApp({ Component, pageProps }) {
         location,
         languageSelected,
         setLanguageSelected,
-        translate,
         isSidebarOpen,
         openSidebar,
         closeSidebar,
-        openLanguageModal,
-        closeLanguageModal,
-        isLanguageModalOpen,
         seeProjects,
         openProjects,
         closeProjects,

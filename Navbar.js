@@ -4,13 +4,8 @@ import LanguageSubmenu from "./LanguageSubmenu";
 import { useEffect, useRef } from "react";
 
 const Navbar = () => {
-  const {
-    openSubmenu,
-    languageSelected,
-    translate,
-    openSidebar,
-    isSidebarOpen,
-  } = useGlobalContext();
+  const { openSubmenu, languageSelected, openSidebar, isSidebarOpen } =
+    useGlobalContext();
   const hoverLanguage = (e) => {
     const location = {
       left:
@@ -42,13 +37,13 @@ const Navbar = () => {
       <div className="navButtons">
         <ul>
           <li>
-            <a href="#aboutMe">{translate("about me")}</a>
+            <a href="#aboutMe">about me</a>
           </li>
           <li>
-            <a href="#projects">{translate("projects")}</a>
+            <a href="#projects">projects</a>
           </li>
           <li>
-            <a href="#contact">{translate("contact")}</a>
+            <a href="#contact">contact</a>
           </li>
           <li>
             <a onMouseOver={hoverLanguage} href="#">
