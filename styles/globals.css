@@ -1,0 +1,822 @@
+/*settings*/
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: Segoe UI;
+  scroll-behavior: smooth;
+}
+body::-webkit-scrollbar {
+  background-color: rgba(0, 0, 0, 0.1);
+  width: 0.5rem;
+}
+body::-webkit-scrollbar-button {
+  display: none;
+}
+body::-webkit-scrollbar-thumb {
+  background-color: var(--primaryColor);
+  border-radius: 1rem;
+}
+/* body::-webkit-scrollbar-track {
+    background-color: orange;
+  } */
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+ul {
+  list-style: none;
+}
+
+/*Global Variables*/
+:root {
+  --backgroundColor: linear-gradient(
+    to right top,
+    #ffffff,
+    #fbfbfc,
+    #f6f8f9,
+    #f1f4f5,
+    #ecf1f1,
+    #eaefef,
+    #e8edec,
+    #e6ebea,
+    #e6eae9,
+    #e5e9e8,
+    #e5e8e7,
+    #e4e7e6
+  );
+  --white: #ffffff;
+  --black: #000000;
+  --primaryColor: #00c6cf;
+  --secondaryColor: #27d5c3;
+  --primaryDarkColor: #324b4c;
+  --secondaryDarkColor: #068488;
+  --correct: #00b965;
+  --error: #ff505e;
+}
+
+/*Language Submenu*/
+
+.languageSubmenu {
+  display: flex;
+  visibility: hidden;
+  flex-direction: column;
+  /* justify-content: flex-end; */
+  position: absolute;
+  transform: translateX(-50%);
+  gap: 0.3rem;
+  padding: 2rem 1rem 1rem;
+  left: -100%;
+}
+.languageSubmenu.show {
+  display: flex;
+  visibility: visible;
+}
+.languageSubmenu a {
+  transform: translateY(-100%);
+  opacity: 0;
+  padding: 0.7rem;
+  border-radius: 1rem;
+  border: 0.1rem solid #000;
+  color: var(--black);
+}
+.languageSubmenu.show a {
+  opacity: 1;
+  transform: translateY(0);
+}
+.languageSubmenu a:nth-child(1) {
+  transition: opacity 0.7s ease-in-out, transform 0.7s ease-in-out,
+    color 0.1s ease;
+}
+.languageSubmenu a:nth-child(2) {
+  transition: opacity 0.7s ease-in-out 0.2s, transform 0.7s ease-in-out 0.2s,
+    color 0.1s ease;
+}
+.languageSubmenu a:hover {
+  border-color: var(--primaryColor);
+}
+.activeLanguage {
+  font-weight: 500;
+  background-color: var(--secondaryColor);
+}
+
+/*Hero*/
+.hero {
+  background: var(--white);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  z-index: 5;
+}
+.hero h1 {
+  font-size: 4rem;
+  transition: all ease 1s;
+  transform: translateY(100%);
+  opacity: 0;
+}
+
+.hero h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  text-align: center;
+  color: var(--primaryDarkColor);
+  transition: all ease 1s 0.5s;
+  transform: translateY(100%);
+  opacity: 0;
+}
+.socialIconContainer {
+  display: flex;
+}
+.hero .socialIconContainer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  margin: 1rem;
+  flex-direction: column;
+  transform: translateY(100%);
+  opacity: 0;
+  transition: all ease 1s 1s;
+}
+
+.socialIcon {
+  font-size: 2rem;
+  transition: all 0.4s ease;
+}
+.socialIcon:hover {
+  transform: scale(1.3);
+}
+.heroSpan {
+  animation: scaleLoop 3s ease-in-out infinite;
+  user-select: none;
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  font-weight: 700;
+  color: var(--black);
+  transform: translateY(100%);
+  opacity: 0;
+  transition: all ease 1s 1s;
+}
+@keyframes scaleLoop {
+  0% {
+    color: var(--black);
+    transform: scale(1);
+  }
+  50% {
+    color: var(--secondaryDarkColor);
+    transform: scale(1.1);
+  }
+  100% {
+    color: var(--black);
+    transform: scale(1);
+  }
+}
+.hero h1.show,
+.hero h2.show,
+.hero .socialIconContainer.show,
+.hero .mailContainer.show,
+.heroSpan.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/*Mail*/
+.hero .mailContainer {
+  background-color: var(--secondaryColor);
+  display: flex;
+  position: absolute;
+  gap: 1rem;
+  border-radius: 2rem;
+  cursor: pointer;
+  padding: 1rem;
+  transition: background-color 0.4s ease, transform ease 1s 1s,
+    opacity ease 1s 1s, color 0.4s ease;
+  bottom: 2rem;
+  transform: translateY(100%);
+  opacity: 0;
+}
+.hero .mailContainer:hover {
+  background-color: var(--primaryDarkColor);
+  color: var(--white);
+}
+.mailContainer:active {
+  background-color: var(--secondaryDarkColor);
+}
+.mailAddress::before {
+  content: "wyagualmindiola@gmail.com";
+}
+.mailIcon {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+.mailAlert {
+  transform: translateY(-100%);
+  font-weight: 500;
+  opacity: 0;
+  transition: all 0.4s ease;
+  z-index: 0;
+  user-select: none;
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  text-align: center;
+}
+.mailAlert.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+.mailAlert.correct {
+  color: var(--correct);
+}
+
+/*Navbar*/
+.navbar {
+  width: 100%;
+  position: absolute;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  padding: 1rem 1rem;
+  z-index: 10;
+}
+.navButtons {
+  transform: translateY(100%);
+  opacity: 0;
+  transition: all 1s ease 1s;
+}
+.navButtons.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+.navbar ul {
+  display: flex;
+  justify-content: space-around;
+  text-transform: capitalize;
+}
+
+.navbar ul li:hover {
+  color: var(--primaryColor);
+}
+
+.h {
+  text-transform: capitalize;
+}
+
+.faBarsContainer {
+  visibility: hidden;
+  display: none;
+}
+.faIcon {
+  font-size: 2rem;
+  cursor: pointer;
+  width: 3rem;
+  border: none;
+  background: transparent;
+  transition: color 0.4s ease;
+}
+.faIcon:hover {
+  color: var(--white);
+}
+
+/*Sidebar*/
+.sidebar {
+  visibility: hidden;
+  width: 100%;
+  background: var(--primaryColor);
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  padding: 1rem;
+  transition: ease-in-out 0.4s all;
+  z-index: 1;
+  clip-path: circle(25px at calc(100% - 40px) 35px);
+}
+
+.faTimesContainer {
+  position: absolute;
+  padding: 0 1rem;
+  right: 0;
+}
+.sidebarButtons {
+  height: 100%;
+}
+.sidebarButtons ul {
+  font-size: 2rem;
+  font-weight: 700;
+  text-transform: capitalize;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.sidebarButtons li {
+  position: relative;
+  opacity: 0;
+  transform: translateY(100%);
+}
+.sidebarButtons li::before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  height: 5px;
+  background: var(--white);
+  transition: all 0.3s ease;
+  width: 0;
+}
+.sidebarButtons li:hover::before {
+  width: 100%;
+}
+.sidebarButtons ul li:hover {
+  color: var(--white);
+}
+
+/* Projects */
+.projects {
+  position: relative;
+  width: 100%;
+}
+
+.projects .information {
+  position: fixed;
+  top: 0;
+  width: 50%;
+  height: 100vh;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.projects .information.show {
+  opacity: 1;
+}
+
+.projects .information .projectName,
+.projects .information .projectNumber,
+.projects .information .projectDescription,
+.projects .information .technologies {
+  position: relative;
+}
+.projects .information .projectName::before,
+.projects .information .projectNumber::before,
+.projects .information .projectDescription::before,
+.projects .information .technologies::before,
+.projects .information .projectSource::before {
+  content: "";
+  position: absolute;
+  background-color: black;
+  width: 0;
+  height: 90%;
+  transition: all 0.5s ease;
+  z-index: 10;
+}
+
+.projects .information.change .projectName::before,
+.projects .information.change .projectDescription::before,
+.projects .information.change .technologies::before,
+.projects .information.change .projectSource::before {
+  width: 100%;
+}
+.projects .information.change .projectNumber::before {
+  width: 10%;
+}
+
+.projects .information .projectNumber {
+  font-size: 2rem;
+}
+.projects .information h1 {
+  font-size: 4rem;
+}
+.projects .information .projectLinks {
+  position: absolute;
+  display: flex;
+  gap: 0.5rem;
+  top: 0;
+  right: 0;
+  font-size: 2rem;
+  margin: 2rem;
+}
+.projects .information .projectLinks .projectSource {
+  cursor: pointer;
+  transition: transform 0.5s ease;
+}
+.projects .information .projectLinks .projectLink {
+  transform: scale(0.8);
+  cursor: pointer;
+  transition: transform 0.5s ease;
+}
+.projects .information .projectLinks .projectSource:hover {
+  transform: scale(1.3);
+}
+.projects .information .projectLinks .projectLink:hover {
+  transform: scale(1);
+}
+.projects .technologies {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  height: 21%;
+  align-items: center;
+}
+.projects .tech {
+  border: solid 1px var(--primaryColor);
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  cursor: default;
+  transition: border 0.5s ease;
+  opacity: 0.7;
+  font-weight: 500;
+}
+.projects .tech:hover {
+  border: solid 1px var(--black);
+}
+.projects .images {
+  position: relative;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 50%;
+  left: 50%;
+}
+.projects .imgContainer {
+  border-radius: 1rem;
+  border: 0.2rem solid var(--black);
+  box-shadow: 2px 2px 0.4rem rgba(0, 0, 0, 0.4);
+}
+.projects .imgContainer img {
+  object-fit: fill;
+  border-radius: 1rem;
+}
+
+/*Contact*/
+.contact {
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  padding: 1rem 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.contactTitle {
+  text-transform: capitalize;
+  font-size: 10rem;
+  opacity: 0.2;
+  position: absolute;
+  top: 0;
+  z-index: -1;
+}
+.contactArticle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  transform: translateY(100%);
+  opacity: 0;
+  transition: all 1s ease;
+}
+.contactArticle.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+.contactArticle h3 {
+  font-size: 2.5rem;
+  text-align: center;
+}
+.contactArticle p {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--primaryDarkColor);
+  text-align: center;
+}
+.contactArticle span {
+  color: red;
+}
+.contact .mailContainer {
+  background-color: var(--secondaryColor);
+  display: flex;
+  position: relative;
+  gap: 1rem;
+  width: fit-content;
+  border-radius: 2rem;
+  cursor: pointer;
+  padding: 1rem;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+.contact .mailContainer:hover {
+  background-color: var(--primaryDarkColor);
+  color: var(--white);
+}
+.contact .mailAlert {
+  font-size: 1rem;
+}
+.contact .socialIconContainer {
+  gap: 1rem;
+}
+.contactForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem 0;
+  transform: translateY(100%);
+  opacity: 0;
+  transition: all 1s ease;
+}
+
+.contact .formAlert {
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding: 1rem;
+  border-radius: 1rem;
+  margin: 1rem;
+  z-index: 10;
+  transform: translateX(150%);
+  transition: transform 0.5s ease;
+}
+.contact .formAlert.success {
+  background-color: var(--correct);
+}
+.contact .formAlert.error {
+  background-color: var(--error);
+}
+
+.contact .formAlert.show {
+  transform: translateX(0);
+}
+
+.contactForm.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+.contact label {
+  position: relative;
+}
+.contact label input,
+.contact label textarea {
+  outline: none;
+  padding: 1rem;
+  width: 400px;
+  border-radius: 3px;
+  transition: border-color ease 0.4s;
+  border: var(--primaryDarkColor) solid 2px;
+}
+
+.contact label input:focus,
+.contact label textarea:focus {
+  border: var(--primaryColor) 2px solid;
+}
+.contact label p {
+  position: absolute;
+  color: #324b4c;
+  background-color: var(--white);
+  pointer-events: none;
+  margin-left: 0.8rem;
+  transition-property: font-size, top, color;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-in-out;
+  text-transform: capitalize;
+}
+.contact label input + p {
+  top: 50%;
+  transform: translateY(-50%);
+}
+.contact label textarea + p {
+  top: 15%;
+  transform: translateY(-50%);
+}
+.contact label input:focus + p,
+.contact label textarea:focus + p,
+.contact label input:not(:placeholder-shown) + p,
+.contact label textarea:not(:placeholder-shown) + p {
+  top: 0;
+  color: var(--primaryColor);
+  font-size: 0.8rem;
+}
+.contact label input:not(:focus) + p,
+.contact label textarea:not(:focus) + p {
+  color: var(--primaryDarkColor);
+}
+
+.contact button {
+  text-transform: capitalize;
+  font-size: 1rem;
+  font-weight: 700;
+  width: 400px;
+  padding: 1rem;
+  background-color: var(--primaryColor);
+  border: solid var(--primaryDarkColor) 2px;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background-color 0.4s ease;
+}
+.contact button:hover {
+  background-color: #abacf6;
+}
+#message {
+  height: 8rem;
+}
+
+/*about me*/
+.aboutMe {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  z-index: 5;
+}
+.aboutMeTitle {
+  font-size: 10rem;
+  opacity: 0.2;
+  text-transform: capitalize;
+  position: absolute;
+  top: 0;
+  width: max-content;
+}
+.aboutMe article {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  height: 100%;
+  padding: 0 6rem;
+}
+.aboutMe article > div {
+  font-size: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: justify;
+}
+.aboutMe article ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+.aboutMe .logo {
+  font-size: 4rem;
+  transition: transform 0.4s ease, color 0.2s ease;
+}
+.aboutMe .logo:hover {
+  transform: scale(1.5);
+}
+.logoName {
+  text-align: center;
+  opacity: 0;
+  transform: translateY(-100%);
+  transition: all 0.4s ease;
+}
+.aboutMe .logo:hover + .logoName {
+  opacity: 1;
+  transform: translateY(0);
+}
+.javascriptLogo + .logoName {
+  position: relative;
+  left: -0.7rem;
+}
+.javascriptLogo:hover {
+  color: #f7e018;
+}
+.reactLogo:hover {
+  color: #5ccfee;
+}
+.nodeLogo:hover {
+  color: #689f63;
+}
+.firebase:hover {
+  color: #ffcb2f;
+}
+.mongodb:hover {
+  color: #6cac48;
+}
+.mongodb + .logoName {
+  position: relative;
+  left: -0.7rem;
+}
+.socketio + .logoName {
+  position: relative;
+  left: -0.5rem;
+}
+
+/*Language Modal*/
+
+.languageModal {
+  position: fixed;
+  background-color: var(--white);
+  height: 100vh;
+  width: 100%;
+  z-index: 10;
+  transform: translateY(-100%);
+  transition: transform 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+.languageModal h2 {
+  text-align: center;
+}
+.languageModal button {
+  width: 10rem;
+  height: 2rem;
+  cursor: pointer;
+  border: var(--primaryDarkColor) solid 2px;
+  border-radius: 3px;
+}
+.languageModal button:hover {
+  border-color: var(--primaryColor);
+}
+.languageModal.show {
+  transform: translateY(0);
+}
+
+/*Media queries*/
+@media screen and (max-width: 1312px) {
+  .hero h1 {
+    color: black;
+  }
+}
+@media screen and (max-width: 992px) {
+  .navButtons {
+    display: none;
+  }
+  .faBarsContainer {
+    visibility: visible;
+    display: flex;
+    position: absolute;
+    padding: 1rem;
+    top: 0;
+    right: 0;
+    justify-content: flex-end;
+    z-index: 10;
+    clip-path: circle(25px at 50% 50%);
+    background-color: var(--primaryColor);
+  }
+  .sidebar.show {
+    clip-path: circle(75%);
+    z-index: 10;
+    visibility: visible;
+  }
+  .sidebar.show .sidebarButtons li {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  .sidebar.show .sidebarButtons li:nth-child(1) {
+    transition: transform 1s ease 0.3s, opacity 1s ease 0.3s, color 0.3s ease;
+  }
+  .sidebar.show .sidebarButtons li:nth-child(2) {
+    transition: transform 1s ease 0.4s, opacity 1s ease 0.4s, color 0.3s ease;
+  }
+  .sidebar.show .sidebarButtons li:nth-child(3) {
+    transition: transform 1s ease 0.5s, opacity 1s ease 0.5s, color 0.3s ease;
+  }
+  .contact {
+    display: flex;
+    flex-direction: column-reverse;
+    height: fit-content;
+  }
+}
+@media screen and (max-width: 688px) {
+  .navButtons {
+    display: none;
+  }
+  .faBarsContainer {
+    display: flex;
+    justify-content: flex-end;
+  }
+  .sidebar.show {
+    visibility: visible;
+  }
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+  .hero h2 {
+    font-size: 1rem;
+  }
+  .heroSpan {
+    font-size: 0.7rem;
+  }
+  .hero .mailContainer {
+    bottom: 8rem;
+  }
+  .aboutMeTitle {
+    font-size: 2rem;
+  }
+  .aboutMe article {
+    display: block;
+    padding: 5rem 4rem;
+  }
+}
