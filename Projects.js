@@ -20,7 +20,6 @@ const Projects = () => {
             setChange(projectsInfo[i - 1].name);
             setTimeout(() => {
               setProject(projectsInfo[i - 1]);
-              console.log("entrar");
             }, 500);
           }
         });
@@ -39,13 +38,10 @@ const Projects = () => {
           // entry.target.classList.add("show");
           openProjects();
           setChange("Change");
-          console.log("PROJECTS SE VE");
         } else {
           // entry.target.classList.remove("show");
           closeProjects();
           setChange("Change2");
-
-          console.log("PROJECTS NO SE VE");
         }
       });
     };

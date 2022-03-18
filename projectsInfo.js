@@ -16,7 +16,8 @@ const projectsInfo = [
     name: "Netflix clone",
     source: "https://github.com/Washintosh/netflix/tree/client",
     link: "https://netflix-client-washington.netlify.app/",
-    description: "Netflix clone",
+    description:
+      "Website to watch different movies or series filtered by genre and authenticated login. Responsive dessign.",
     technologies: ["Node.js", "React", "Express", "Firebase", "Mongodb"],
     images: [
       netflix01,
@@ -33,7 +34,8 @@ const projectsInfo = [
     name: "Netflix Admin",
     source: "https://github.com/Washintosh/netflix/tree/admin",
     link: "https://netflix-admin-washington.netlify.app/",
-    description: "Netflix clone",
+    description:
+      "Website to add, delete, update or get all movies or series to the Netflix clone platform. Also gives new users registered.",
     technologies: [
       "Node.js",
       "React",

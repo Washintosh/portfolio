@@ -70,29 +70,36 @@ const Contact = () => {
   });
 
   useEffect(() => {
-    const verifyVisibility = (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("show");
-          // closeProjects();
-        } else {
-          // openProjects();
-          entry.target.classList.remove("show");
-        }
+    //Polyfill del intersection observer
+    Promise.resolve(
+      typeof window.IntersectionObserver !== "undefined"
+        ? window.IntersectionObserver
+        : import("intersection-observer")
+    ).then(() => {
+      const verifyVisibility = (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+            // closeProjects();
+          } else {
+            // openProjects();
+            entry.target.classList.remove("show");
+          }
+        });
+      };
+      const observer = new window.IntersectionObserver(verifyVisibility, {
+        rootMargin: "300px",
       });
-    };
-    const observer = new IntersectionObserver(verifyVisibility, {
-      rootMargin: "300px",
+      observer.observe(contactFormRef.current);
+      observer.observe(contactArticleRef.current);
     });
-    observer.observe(contactFormRef.current);
-    observer.observe(contactArticleRef.current);
   }, []);
 
   useEffect(() => {
     if (formAlert.show) {
       const timeout = setTimeout(
         () => setFormAlert((prev) => ({ ...prev, show: false })),
-        1500
+        4500
       );
       return () => clearTimeout(timeout);
     }
