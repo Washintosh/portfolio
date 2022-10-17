@@ -46,7 +46,7 @@ const DataScience = ({ lang }) => {
           </div>
         </section>
         <article id="data-science-article">
-          <p>I'm a professional in:</p>
+          <p>I&apos;m a professional in:</p>
           <div id="data-science-techs">
             {Object.keys(DATA_SCIENCE_TECHS).map((tech) => {
               const { name, icon } = DATA_SCIENCE_TECHS[tech];

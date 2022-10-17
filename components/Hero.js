@@ -40,7 +40,7 @@ const Hero = ({ lang }) => {
     return (
       <div id="hero">
         <div id="leftHero" ref={leftHeroRef}>
-          <p>Hi! Welcome, I'm</p>
+          <p>Hi! Welcome, I&apos;m</p>
           <h1>Washington</h1>
           <h2>Full Stack Developer · Data Analyst</h2>
           <div className="buttonsContainer">

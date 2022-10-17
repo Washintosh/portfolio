@@ -25,9 +25,9 @@ const Contact = ({ lang }) => {
         <article className="contactArticle">
           <div>
             <p>Are you interested?</p>
-            <span>Let's get in touch !</span>
-            <p>I'm open to freelance opportunities or remote position.</p>
-            <p>Let's work together.</p>
+            <span>Let&apos;s get in touch !</span>
+            <p>I&apos;m open to freelance opportunities or remote position.</p>
+            <p>Let&apos;s work together.</p>
             <p>Feel free to send an email.</p>
           </div>
           <SocialIconContainer lang={lang} />

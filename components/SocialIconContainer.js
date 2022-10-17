@@ -30,6 +30,7 @@ const SocialIconContainer = ({ lang }) => {
         <a
           href="https://www.linkedin.com/in/washington-xavier-yagual-mindiola-42a811215/"
           target="_blank"
+          rel="noreferrer"
           className="socialIcon"
         >
           <AiFillLinkedin />
@@ -37,6 +38,7 @@ const SocialIconContainer = ({ lang }) => {
         <a
           href="https://github.com/Washintosh"
           target="_blank"
+          rel="noreferrer"
           className="socialIcon"
         >
           <AiFillGithub />
@@ -57,6 +59,7 @@ const SocialIconContainer = ({ lang }) => {
         <a
           href="https://www.linkedin.com/in/washington-xavier-yagual-mindiola-42a811215/"
           target="_blank"
+          rel="noreferrer"
           className="socialIcon"
         >
           <AiFillLinkedin />
@@ -64,6 +67,7 @@ const SocialIconContainer = ({ lang }) => {
         <a
           href="https://github.com/Washintosh"
           target="_blank"
+          rel="noreferrer"
           className="socialIcon"
         >
           <AiFillGithub />
