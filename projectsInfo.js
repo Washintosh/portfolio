@@ -10,6 +10,11 @@ import netflixAdmin02 from "./public/netflixAdmin02.png";
 import netflixAdmin03 from "./public/netflixAdmin03.png";
 import netflixAdmin04 from "./public/netflixAdmin04.png";
 import netflixAdmin05 from "./public/netflixAdmin05.png";
+import facebook01 from "./public/facebook01.png";
+import facebook02 from "./public/facebook02.png";
+import facebook03 from "./public/facebook03.png";
+import facebook04 from "./public/facebook04.png";
+import facebook05 from "./public/facebook05.png";
 const projectsInfo = [
   {
     number: 1,
@@ -51,6 +56,24 @@ const projectsInfo = [
       netflixAdmin04,
       netflixAdmin05,
     ],
+  },
+  {
+    number: 3,
+    name: "Facebook Clone",
+    source: "https://github.com/Washintosh/facebook/tree/client",
+    link: "https://netflix-admin-washington.netlify.app/",
+    description:
+      "Website to post and chat with friends. You can also leave comments and like posts.",
+    technologies: [
+      "Node.js",
+      "React",
+      "Express",
+      "Firebase",
+      "Mongodb",
+      "Material UI",
+      "Redux",
+    ],
+    images: [facebook01, facebook02, facebook03, facebook04, facebook05],
   },
 ];
 
